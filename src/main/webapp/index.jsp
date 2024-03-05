@@ -21,7 +21,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             padding: 20px;
             margin: 20px auto;
-            max-width: 400px;
+            max-width: 600px;
         }
 
         label {
@@ -51,6 +51,23 @@
             background-color: #45a049;
         }
 
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
         #result {
             color: #333;
             font-weight: bold;
@@ -73,9 +90,23 @@
         <button onclick="subtract()">Subtract</button>
         <button onclick="multiply()">Multiply</button>
         <button onclick="divide()">Divide</button>
+        <button onclick="clearResults()">Clear Results</button>
 
         <p id="result">Result: </p>
+
+        <table id="resultsTable">
+            <thead>
+                <tr>
+                    <th>Operation</th>
+                    <th>Result</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
     </div>
+
+    <p id="datetime"></p>
 
     <script>
         function add() {
@@ -83,6 +114,7 @@
             var num2 = parseFloat(document.getElementById("num2").value);
             var result = num1 + num2;
             document.getElementById("result").innerText = "Result: " + result;
+            addToResultsTable("Addition", result);
         }
 
         function subtract() {
@@ -90,6 +122,7 @@
             var num2 = parseFloat(document.getElementById("num2").value);
             var result = num1 - num2;
             document.getElementById("result").innerText = "Result: " + result;
+            addToResultsTable("Subtraction", result);
         }
 
         function multiply() {
@@ -97,6 +130,7 @@
             var num2 = parseFloat(document.getElementById("num2").value);
             var result = num1 * num2;
             document.getElementById("result").innerText = "Result: " + result;
+            addToResultsTable("Multiplication", result);
         }
 
         function divide() {
@@ -105,10 +139,36 @@
             if (num2 !== 0) {
                 var result = num1 / num2;
                 document.getElementById("result").innerText = "Result: " + result;
+                addToResultsTable("Division", result);
             } else {
                 document.getElementById("result").innerText = "Cannot divide by zero!";
             }
         }
+
+        function clearResults() {
+            document.getElementById("result").innerText = "Result: ";
+            var tableBody = document.getElementById("resultsTable").getElementsByTagName("tbody")[0];
+            tableBody.innerHTML = "";
+        }
+
+        function addToResultsTable(operation, result) {
+            var tableBody = document.getElementById("resultsTable").getElementsByTagName("tbody")[0];
+            var newRow = tableBody.insertRow();
+            var cell1 = newRow.insertCell(0);
+            var cell2 = newRow.insertCell(1);
+            cell1.innerText = operation;
+            cell2.innerText = result;
+        }
+
+        function updateTime() {
+            var currentDate = new Date();
+            var dateTimeElement = document.getElementById("datetime");
+            dateTimeElement.innerText = "Current Date & Time: " + currentDate.toLocaleString();
+        }
+
+        // Update time every second
+        setInterval(updateTime, 1000);
+        updateTime(); // Initial call to display time
     </script>
 </body>
 
