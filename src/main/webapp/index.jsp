@@ -90,6 +90,11 @@
         <button onclick="subtract()">Subtract</button>
         <button onclick="multiply()">Multiply</button>
         <button onclick="divide()">Divide</button>
+        <button onclick="square()">Square</button>
+        <button onclick="squareRoot()">Square Root</button>
+        <button onclick="generateRandomNumber()">Random Number</button>
+        <button onclick="storeResult()">Store Result</button>
+        <button onclick="recallResult()">Recall Result</button>
         <button onclick="clearResults()">Clear Results</button>
 
         <p id="result">Result: </p>
@@ -142,6 +147,45 @@
                 addToResultsTable("Division", result);
             } else {
                 document.getElementById("result").innerText = "Cannot divide by zero!";
+            }
+        }
+
+        function square() {
+            var num1 = parseFloat(document.getElementById("num1").value);
+            var result = num1 * num1;
+            document.getElementById("result").innerText = "Result: " + result;
+            addToResultsTable("Square", result);
+        }
+
+        function squareRoot() {
+            var num1 = parseFloat(document.getElementById("num1").value);
+            if (num1 >= 0) {
+                var result = Math.sqrt(num1);
+                document.getElementById("result").innerText = "Result: " + result;
+                addToResultsTable("Square Root", result);
+            } else {
+                document.getElementById("result").innerText = "Cannot calculate square root of a negative number!";
+            }
+        }
+
+        function generateRandomNumber() {
+            var result = Math.floor(Math.random() * 100) + 1;
+            document.getElementById("result").innerText = "Random Number: " + result;
+            addToResultsTable("Random Number", result);
+        }
+
+        var storedResult = null;
+
+        function storeResult() {
+            storedResult = document.getElementById("result").innerText;
+            alert("Result stored!");
+        }
+
+        function recallResult() {
+            if (storedResult !== null) {
+                document.getElementById("result").innerText = storedResult;
+            } else {
+                alert("No result stored!");
             }
         }
 
