@@ -4,10 +4,57 @@
 <head>
     <title>GANA TECH APP VERSION-4000</title>
     <style>
-        h1 {
-            color: green;
-            font-size: 40px;
+        body {
+            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
             text-align: center;
+        }
+
+        h1 {
+            color: #4CAF50;
+            font-size: 40px;
+        }
+
+        div {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 400px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 6px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            color: #333;
+            font-weight: bold;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -66,4 +113,3 @@
 </body>
 
 </html>
-
