@@ -12,8 +12,6 @@ pipeline{
         }
         stage("Maven Build"){
             steps{
-                def mavenHome = tool 'Maven3'
-                def mavenCMD = "${mavenHome}/bin/mvn"
                 sh "mvn clean package"
                 sh "mv target/*.war target/myweb.war"
             }
